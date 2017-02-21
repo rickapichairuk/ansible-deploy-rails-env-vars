@@ -29,6 +29,7 @@ You can use ansible-vault to encrypt configuration key/values.
 
 # CONFIGURATION FILES SUPPORTED
 
+* secrets.yml (rails [secrets.yml](http://edgeguides.rubyonrails.org/security.html#custom-secrets) file)
 * application.yml (used in conjunction with [Figaro](https://github.com/laserlemon/figaro))
 * database.yml (default [rails database configuration file](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database))
 * newrelic.yml ([newrelic configuration](https://docs.newrelic.com/docs/agents/ruby-agent/configuration/ruby-agent-configuration) file)
@@ -41,6 +42,14 @@ You can use ansible-vault to encrypt configuration key/values.
   hosts: rails_app_servers
   roles:
     - role: rickapichairuk.deploy-rails-env-vars
+      etc_environment:
+        deploy: true
+        template: /local/path/to/your/etc/environment.j2
+        dest: /etc/environment
+      secrets_yml:
+        deploy: true
+        template: /local/path/to/your/secrets.yml.j2
+        dest: /server/path/to/put/secrets.yml
       application_yml:
         deploy: true
         template: /local/path/to/your/application.yml.j2
@@ -71,6 +80,10 @@ work, you will have to setup rbenv on your server for the user that puma (and
 sidekiq) run as. You will have to have to also write all your configuration
 files (application.yml, database.yml, etc) to refer to ENV.
 
+The main benefit of doing it this way is that you only have to deploy one file
+and you can check in all the other configuration files (assuming they refer to
+the ENV variables) into the repository.
+
 # USING WITH CAPISTRANO AND SYMLINKED CONFIG FILES
 
 You can deploy config files that have the configuration values interpolated into
@@ -93,6 +106,18 @@ For example:
 ```sh
 $ ln -s /home/deploy_user/apps/your_app/shared/dot.rbenv-vars /home/deploy_user/.rbenv-var
 ```
+
+# ADDITIONAL READING & REFERENCE
+
+* [Twilio blog post on configuring rails apps](https://www.twilio.com/blog/2015/02/managing-development-environment-variables-across-multiple-ruby-applications.html)
+* [12 Factor Apps](https://12factor.net/config)
+* [How to Set and Unset Local, User and System Wide Environment Variables in Linux](http://www.tecmint.com/set-unset-environment-variables-in-linux/)
+* [rbenv-vars](https://github.com/rbenv/rbenv-vars)
+* [THE MARRIAGE OF FIGARO… AND RAILSS](https://www.collectiveidea.com/blog/archives/2013/12/18/the-marriage-of-figaro-and-rails/)
+* [Figaro gem](https://github.com/laserlemon/figaro)
+* [dotenv gem](https://github.com/bkeepers/dotenv)
+* [envyable gem](https://github.com/philnash/envyable)
+
 
 # AUTHOR
 

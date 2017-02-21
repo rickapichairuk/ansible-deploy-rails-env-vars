@@ -1,2 +1,4 @@
 ---
 # defaults file for ansible-deploy-rails-env-vars
+etc_environment:
+  dest: /etc/environment
