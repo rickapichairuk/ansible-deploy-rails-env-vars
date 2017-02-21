@@ -1,0 +1,46 @@
+galaxy_info:
+  author: Rick Apichairuk
+  description: Role to deploy common rails config files and config values
+  license: BSD
+  min_ansible_version: 1.2
+  platforms:
+  - name: OpenBSD
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+  - name: MacOSX
+    versions:
+    - all
+  - name: GenericBSD
+    versions:
+    - all
+  - name: Void Linux
+    versions:
+    - all
+  - name: GenericLinux
+    versions:
+    - all
+  - name: ArchLinux
+    versions:
+    - all
+  - name: FreeBSD
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: opensuse
+    versions:
+    - all
+
+  galaxy_tags:
+    - rails
+    - 12factor
+    - configuration
+
+dependencies: []

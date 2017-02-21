@@ -1,0 +1,25 @@
+---
+- name: "copy application.yml file to shared directory"
+  template:  src={{application_yml.template}} dest={{application_yml.dest}}
+  when: application_yml.deploy == true
+
+- name: "copy .rbenv-vars file to shared directory"
+  template:  src={{dot_rbenv_vars.template}} dest={{dot_rbenv_vars.dest}}
+  when: dot_rbenv_vars.deploy == true
+
+- name: "symlink .rbenv-vars file to home directory of {{deploy_user}}"
+  file: src={{dot_rbenv_vars.dest}}
+        dest={{dot_rbenv_vars.symlink_dest}}
+        owner={{dot_rbenv_vars.symlink_owner}}
+        group={{dot_rbenv_vars.symlink_group}}
+        state=link
+  when: dot_rbenv_vars.create_symlink == true
+
+- name: "copy database.yml to shared directory"
+  template:  src={{database_yml.template}}
+             dest={{database_yml.dest}}
+  when: database_yml.deploy == true
+
+- name: "copy newrelic.yml file to shared directory"
+  template:  src={{newrelic_yml.template}} dest={{newrelic_yml.dest}}
+  when: newrelic_yml.deploy == true
