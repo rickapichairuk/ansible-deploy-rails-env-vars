@@ -79,6 +79,21 @@ configuration files.
 Be sure to setup capistrano to use `:linked_files` and `:linked_dirs` to symlink
 the files deployed by ansible and this role to the rails app deploy directory.
 
+# WHY IS .rbenv-vars TREATED DIFFERENTLY?
+
+The reason that .rbenv-vars can be configured to be symlinked is because the
+author usually has the destination be the shared directory so it is in the same
+directory as all the other configuration files. However, capistrano cannot
+symlink the .rben-vars to the $HOME directory because it's not in the app
+directory. Ansible is used to create the symlink from the shared directory to
+the home directory.
+
+For example:
+
+```sh
+$ ln -s /home/deploy_user/apps/your_app/shared/dot.rbenv-vars /home/deploy_user/.rbenv-var
+```
+
 # AUTHOR
 
 Rick Apichairuk
