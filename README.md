@@ -34,6 +34,7 @@ You can use ansible-vault to encrypt configuration key/values.
 * database.yml (default [rails database configuration file](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database))
 * newrelic.yml ([newrelic configuration](https://docs.newrelic.com/docs/agents/ruby-agent/configuration/ruby-agent-configuration) file)
 * .rbenv-vars (used in conjunction with [rbenv-vars](https://github.com/rbenv/rbenv-vars))
+* /etc/environment (debian [system wide environment](http://askubuntu.com/questions/150789/difference-between-bash-bashrc-and-etc-environment-file))
 
 # EXAMPLE PLAYBOOK
 
@@ -113,7 +114,7 @@ $ ln -s /home/deploy_user/apps/your_app/shared/dot.rbenv-vars /home/deploy_user/
 * [12 Factor Apps](https://12factor.net/config)
 * [How to Set and Unset Local, User and System Wide Environment Variables in Linux](http://www.tecmint.com/set-unset-environment-variables-in-linux/)
 * [rbenv-vars](https://github.com/rbenv/rbenv-vars)
-* [THE MARRIAGE OF FIGARO… AND RAILSS](https://www.collectiveidea.com/blog/archives/2013/12/18/the-marriage-of-figaro-and-rails/)
+* [THE MARRIAGE OF FIGARO… AND RAILS](https://www.collectiveidea.com/blog/archives/2013/12/18/the-marriage-of-figaro-and-rails/)
 * [Figaro gem](https://github.com/laserlemon/figaro)
 * [dotenv gem](https://github.com/bkeepers/dotenv)
 * [envyable gem](https://github.com/philnash/envyable)
