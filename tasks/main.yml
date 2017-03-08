@@ -1,4 +1,9 @@
 ---
+- file:
+    path: "{{deploy_rails_config_dir}}"
+    state: directory
+    mode: 0755
+
 - name: "deploy /etc/environment file to target server(s)"
   template:  src={{etc_environment.template}} dest={{etc_environment.dest}}
   when: etc_environment.deploy == true
