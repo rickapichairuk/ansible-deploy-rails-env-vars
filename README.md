@@ -27,6 +27,9 @@ In the spirit of [12 Factor Apps](https://12factor.net/) recommendation for
 mechanisms to manage the following commonly used rails configuration files.
 You can use ansible-vault to encrypt configuration key/values.
 
+This is created to be used with capistrano and symlinked config files from a
+shared directory for config files.
+
 # CONFIGURATION FILES SUPPORTED
 
 * secrets.yml (rails [secrets.yml](http://edgeguides.rubyonrails.org/security.html#custom-secrets) file)
@@ -43,6 +46,7 @@ You can use ansible-vault to encrypt configuration key/values.
   hosts: rails_app_servers
   roles:
     - role: rickapichairuk.deploy-rails-env-vars
+      deploy_rails_config_dir: /path/to/shared/capistrano/config/dir
       etc_environment:
         deploy: true
         template: /local/path/to/your/etc/environment.j2
