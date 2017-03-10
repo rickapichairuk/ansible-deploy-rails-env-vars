@@ -10,18 +10,18 @@
   when: deploy_rails_env_vars.etc_environment.deploy == true
 
 - name: "deploy secrets.yml file to target server(s)"
-  template:  src={{deploy_rails_env.secrets_yml.template}}
-             dest={{deploy_rails_env.secrets_yml.dest}}
+  template:  src={{deploy_rails_env_vars.secrets_yml.template}}
+             dest={{deploy_rails_env_vars.secrets_yml.dest}}
   when: deploy_rails_env_vars.secrets_yml.deploy == true
 
 - name: "deploy application.yml file to target server(s)"
-  template:  src={{deploy_rails_env.application_yml.template}}
-             dest={{deploy_rails_env.application_yml.dest}}
+  template:  src={{deploy_rails_env_vars.application_yml.template}}
+             dest={{deploy_rails_env_vars.application_yml.dest}}
   when: deploy_rails_env_vars.application_yml.deploy == true
 
 - name: "deploy .rbenv-vars file to target server(s)"
-  template:  src={{deploy_rails_env.dot_rbenv_vars.template}}
-             dest={{deploy_rails_env.dot_rbenv_vars.dest}}
+  template:  src={{deploy_rails_env_vars.dot_rbenv_vars.template}}
+             dest={{deploy_rails_env_vars.dot_rbenv_vars.dest}}
   when: deploy_rails_env_vars.dot_rbenv_vars.deploy == true
 
 - name: "create symlink to .rbenv-vars file"
