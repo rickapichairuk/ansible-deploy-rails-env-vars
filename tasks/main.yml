@@ -5,34 +5,39 @@
     mode: 0755
 
 - name: "deploy /etc/environment file to target server(s)"
-  template:  src={{etc_environment.template}} dest={{etc_environment.dest}}
-  when: etc_environment.deploy == true
+  template:  src={{deploy_rails_env_vars.etc_environment.template}}
+             dest={{deploy_rails_env_vars.etc_environment.dest}}
+  when: deploy_rails_env_vars.etc_environment.deploy == true
 
 - name: "deploy secrets.yml file to target server(s)"
-  template:  src={{secrets_yml.template}} dest={{secrets_yml.dest}}
-  when: secrets_yml.deploy == true
+  template:  src={{deploy_rails_env.secrets_yml.template}}
+             dest={{deploy_rails_env.secrets_yml.dest}}
+  when: deploy_rails_env_vars.secrets_yml.deploy == true
 
 - name: "deploy application.yml file to target server(s)"
-  template:  src={{application_yml.template}} dest={{application_yml.dest}}
-  when: application_yml.deploy == true
+  template:  src={{deploy_rails_env.application_yml.template}}
+             dest={{deploy_rails_env.application_yml.dest}}
+  when: deploy_rails_env_vars.application_yml.deploy == true
 
 - name: "deploy .rbenv-vars file to target server(s)"
-  template:  src={{dot_rbenv_vars.template}} dest={{dot_rbenv_vars.dest}}
-  when: dot_rbenv_vars.deploy == true
+  template:  src={{deploy_rails_env.dot_rbenv_vars.template}}
+             dest={{deploy_rails_env.dot_rbenv_vars.dest}}
+  when: deploy_rails_env_vars.dot_rbenv_vars.deploy == true
 
 - name: "create symlink to .rbenv-vars file"
-  file: src={{dot_rbenv_vars.dest}}
-        dest={{dot_rbenv_vars.symlink_dest}}
-        owner={{dot_rbenv_vars.symlink_owner}}
-        group={{dot_rbenv_vars.symlink_group}}
+  file: src={{deploy_rails_env_vars.dot_rbenv_vars.dest}}
+        dest={{deploy_rails_env_vars.dot_rbenv_vars.symlink_dest}}
+        owner={{deploy_rails_env_vars.dot_rbenv_vars.symlink_owner}}
+        group={{deploy_rails_env_vars.dot_rbenv_vars.symlink_group}}
         state=link
-  when: dot_rbenv_vars.create_symlink == true
+  when: deploy_rails_env_vars.dot_rbenv_vars.create_symlink == true
 
 - name: "deploy database.yml to target server(s)"
-  template:  src={{database_yml.template}}
-             dest={{database_yml.dest}}
-  when: database_yml.deploy == true
+  template:  src={{deploy_rails_env_vars.database_yml.template}}
+             dest={{deploy_rails_env_vars.database_yml.dest}}
+  when: deploy_rails_env_vars.database_yml.deploy == true
 
 - name: "deploy newrelic.yml file to target server(s)"
-  template:  src={{newrelic_yml.template}} dest={{newrelic_yml.dest}}
-  when: newrelic_yml.deploy == true
+  template:  src={{deploy_rails_env_vars.newrelic_yml.template}}
+             dest={{deploy_rails_env_vars.newrelic_yml.dest}}
+  when: deploy_rails_env_vars.newrelic_yml.deploy == true
