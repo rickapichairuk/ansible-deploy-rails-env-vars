@@ -10,5 +10,6 @@ deploy_rails_env_vars:
     deploy: true
   dot_rbenv_vars:
      deploy: true
+     create_symlink: true
   newrelic_yml:
     deploy: true
