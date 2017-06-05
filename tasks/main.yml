@@ -15,7 +15,7 @@
   when: deploy_rails_env_vars.secrets_yml.deploy == true
 
 - name: "deploy secrets.yml.key file to target server(s)"
-  template:  src={{deploy_rails_env_vars.secrets_yml.template}}
+  template:  src={{deploy_rails_env_vars.secrets_yml_key.template}}
              dest={{deploy_rails_env_vars.secrets_yml_key.dest}}
   when: deploy_rails_env_vars.secrets_yml_key.deploy == true
 
