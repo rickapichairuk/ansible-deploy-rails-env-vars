@@ -55,6 +55,10 @@ shared directory for config files.
         deploy: true
         template: /local/path/to/your/secrets.yml.j2
         dest: /server/path/to/put/secrets.yml
+      secrets_yml_key:
+        deploy: true
+        template: /local/path/to/your/secrets.yml.key.j2
+        dest: /server/path/to/put/secrets.yml.key
       application_yml:
         deploy: true
         template: /local/path/to/your/application.yml.j2
