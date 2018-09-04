@@ -46,3 +46,8 @@
   template:  src={{deploy_rails_env_vars.newrelic_yml.template}}
              dest={{deploy_rails_env_vars.newrelic_yml.dest}}
   when: deploy_rails_env_vars.newrelic_yml.deploy == true
+
+- name: "deploy logrotate.conf file to target server(s)"
+  template:  src={{deploy_rails_env_vars.logrotate_conf.template}}
+             dest={{deploy_rails_env_vars.logrotate_conf.dest}}
+  when: deploy_rails_env_vars.logrotate_conf.deploy == true

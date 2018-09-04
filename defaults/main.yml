@@ -13,3 +13,5 @@ deploy_rails_env_vars:
      create_symlink: true
   newrelic_yml:
     deploy: true
+  logrotate_conf:
+    deploy: true
